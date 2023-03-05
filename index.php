@@ -10,41 +10,33 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
     <!-- custom css link -->
-    <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h2>PHP To-Do App</h2>
+            <h2>PHP To-Do Application</h2>
+            <a class="btn" href="#">Login</a>
+            <a class="btn" href="#">Register</a>
         </header>
         <main>
-            <!-- create task start -->
-            <div class="create-task">
+            <!-- login section start -->
+            <div class="login-box">
+                <h2>Login</h2>
                 <form action="">
-                    <table>
-                        <thead>
-                            
-                        </thead>
-                        <tbody>
-
-                        </tbody>
-                    </table>
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" placeholder="enter email">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" placeholder="enter password">
+                    <input type="submit" class="login-btn" value="Login">
+                    <p>You don't have an account? <a href="#">Register now</a></p>
                 </form>
             </div>
-            <!-- create task end -->
-
-            <!-- incomplete task start -->
-            <div class="tasks">
-
-            </div>
-            <!-- incomplete task end -->
-
-            <!-- complete task start -->
-            <div class="tasks">
-
-            </div>
-            <!-- complete task end -->
         </main>
-    </div>
+            <!-- login section end -->
+
+
+    <!-- custom script link  -->
+    <script src="./assets/js/main.js"></script>
 </body>
 </html>
