@@ -28,23 +28,32 @@
         </header>
         <main>
             <!-- login section start -->
-            <div class="login-box">
-                <h2>Login</h2>
+            <div class="register-box">
+                <h2>Register</h2>
                 <?php 
                     if(isset($_GET['status'])) {
                         echo getActionMessage($_GET['status']);
                     }
                 ?>
-                <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+                <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" placeholder="Enter your name (Only letters and whitespace)">
+                    <span style="color:red"><?php echo $nameErr ?> </span>
                     <label for="email">Email:</label>
-                    <input type="text" name="email" placeholder="Enter email"><br>
+                    <input type="text" name="email" placeholder="Enter your email"><br>
                     <span style="color:red"><?php echo $emailErr ?> </span>
                     <label for="password">Password:</label>
                     <input type="password" name="password" placeholder="Enter password"><br>
-                    <span style="color:red"><?php echo $passwordErr ?> </span><br>
-                    <input type="submit" class="submit-btn" value="Login">
-                    <input type="hidden" name="action" value="login">
-                    <p>You don't have an account? <a href="./register.php">Register now</a></p>
+                    <span style="color:red"><?php echo $passwordErr ?> </span>
+                    <label for="confirm-pwd">Confirm Password:</label>
+                    <input type="password" name="confirm-pwd" placeholder="Confirm your password"><br>
+                    <span style="color:red"><?php echo $confirmPasswordErr ?> </span><br>
+                    <label for="profile picture">Profile Picture:</label>
+                    <input type="file" name="profile-pic"><span style="font-size:13px; color: red;">Image size must be 300 * 300 px and under 100kb</span><br>
+                    <span style="color:red"><?php echo $profilePicErr ?> </span><br>
+                    <input type="submit" class="submit-btn" value="register">
+                    <input type="hidden" name="action" value="register">
+                    <p>Already have an account? <a href="./index.php">Login now</a></p>
                 </form>
             </div>
         </main>
