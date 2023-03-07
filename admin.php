@@ -63,10 +63,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         }
     }
 
-    if(empty($_FILES['profile-pic']["error"] == 0)) {
+    if(isset($_FILES['profile-pic']["error"]) > 0) {
         $profilePicErr = "Profile picture is missing";
     } else {
-        if($_FILES['profile-pic']) {
+        if(isset($_FILES['profile-pic']["error"])) {
             $imageFileType = strtolower(pathinfo(basename($_FILES['profile-pic']['name']), PATHINFO_EXTENSION));
             $check = getimagesize($_FILES['profile-pic']['tmp_name']);
             if($check !== false) {
@@ -134,11 +134,11 @@ if('register' == $action) {
         
         mysqli_query($conn, $query);
         if(mysqli_error($conn)) {
-            echo mysqli_error($conn);
+            $status = 3;
         }else {
             $status = 4;
         }
-        // header("Location: index.php?status={$status}");
+        header("Location: index.php?status={$status}");
     }
 }
 
