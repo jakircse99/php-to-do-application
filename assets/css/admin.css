@@ -1,0 +1,112 @@
+/* fonts */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --main-color: #3E54AC;
+    --secondery-color: #d35400;
+    --light-bg: #ECF2FF;
+    --light-color: #ecf0f1;
+    --green: #27ae60;
+    --orange: #e67e22;
+    --red: #e74c3c;
+    --white: #ffffff;
+    --box-shadow: rgba(0,0,0,0.35) 0px 5px 15px;
+}
+
+* {
+    margin:0;padding:0;
+    border: none;
+    outline:none;
+    text-decoration: none;
+    font-family: 'Nunito', sans-serif;
+}
+
+
+body {
+    background-color: var(--light-bg);
+    margin-left: 30rem;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-right: 5rem;
+}
+
+header p {
+    font-size: 20px;
+}
+
+
+
+
+
+aside {
+    background-color: #252529;
+    width: 25rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding: 20px;
+}
+
+aside .profile {
+    text-align: center;
+}
+
+aside .menu a {
+    color: var(--white);
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 8px;
+}
+
+aside .menu a:hover {
+    color: var(--main-color);
+}
+
+/* main */
+
+main table .tasks-list-title {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+table .today tr:not(:first-child) i{
+    color: var(--green);
+}
+
+table .today tr td:nth-child(2) span {
+    background-color: var(--green);
+    padding: 2px 10px;
+    border-radius: 20px;
+    color: white;
+}
+
+table .today tr td:nth-child(3) span {
+    background-color: var(--green);
+    padding: 8px 4px;
+    border-radius: 50%;
+    color: white;
+}
+
+table .tomorrow tr:not(:first-child) i{
+    color: var(--main-color);
+}
+
+table .tomorrow tr td:nth-child(2) span {
+    background-color: var(--main-color);
+    padding: 2px 10px;
+    border-radius: 20px;
+    color: white;
+}
+
+table .tomorrow tr td:nth-child(3) span {
+    background-color: var(--main-color);
+    padding: 10px 15px;
+    border-radius: 50%;
+    color: white;
+}
