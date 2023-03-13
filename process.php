@@ -63,10 +63,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         }
     }
 
-    if(isset($_FILES['profile-pic']["error"]) > 0) {
+    if(isset($_FILES['profile-pic']["error"]) == 0) {
         $profilePicErr = "Profile picture is missing";
     } else {
-        if(isset($_FILES['profile-pic']["error"])) {
+        if($_FILES['profile-pic']) {
             $imageFileType = strtolower(pathinfo(basename($_FILES['profile-pic']['name']), PATHINFO_EXTENSION));
             $check = getimagesize($_FILES['profile-pic']['tmp_name']);
             if($check !== false) {
@@ -111,8 +111,11 @@ if('login' == $action) {
             $data = mysqli_fetch_assoc($result);
             $id = $data['id'];
             $_password = $data['password'];
-            if($password == $_password) {
-                header("location:dashboard.php");
+            if(password_verify($password, $_password)) {
+                $_SESSION['id'] = $id;
+                $_SESSION['start'] = time();
+                $_SESSION['expire'] = $_SESSION['start'] + (2 * 60);
+                header("location:admin/dashboard.php");
                 die();
             }else {
                 $status = 1;
@@ -129,8 +132,9 @@ if('register' == $action) {
     if($name && $email && $password && $profilePic) {
         $targetFile = "./profile-pic/". basename($_FILES['profile-pic']['name']);
         $fileName = basename($_FILES['profile-pic']['name']);
+        $passHash = password_hash($password, PASSWORD_BCRYPT);
         move_uploaded_file($_FILES['profile-pic']['tmp_name'], $targetFile);
-        $query = "INSERT INTO  users(name, email, password, profilepic) VALUES ('{$name}', '{$email}', '{$password}', '{$fileName}')";
+        $query = "INSERT INTO  users(name, email, password, profilepic) VALUES ('{$name}', '{$email}', '{$passHash}', '{$fileName}')";
         
         mysqli_query($conn, $query);
         if(mysqli_error($conn)) {

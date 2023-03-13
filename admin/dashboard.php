@@ -1,3 +1,26 @@
+<?php
+    session_start();
+    include_once "../inc/functions.php";
+
+
+    $_userId = $_SESSION['id'] ?? 0;
+
+    if(!$_userId) {
+        header('location: ../index.php');
+        die();
+    } 
+    // else {
+    //     $currentTime = time();
+
+    //     if($currentTime > $_SESSION['expire']) {
+    //         $_SESSION['id'] = 0;
+    //         session_destroy();
+    //         header("location: ../index.php");
+    //     }
+    // }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +43,7 @@
 
         <header>
             <div class="greetings">
-                <p><i class="fa-solid fa-hands-clapping"></i> Good morning, Jhon Doe!</p>
+                <p><i class="fa-solid fa-hands-clapping"></i> Good morning, <?php echo getProfileName($_userId); ?>!</p>
             </div>
             <div class="date">
                 <p>Friday, 24th February, 2023</p>

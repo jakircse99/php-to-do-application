@@ -1,7 +1,12 @@
 <?php
     include_once "inc/functions.php";
-    include_once "admin.php";
+    include_once "process.php";
 
+    $_userId = $_SESSION['id'] ?? 0;
+
+    if($_userId) {
+        header('location: admin/dashboard.php');
+    }
 
 ?>
 

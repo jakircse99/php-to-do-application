@@ -1,6 +1,6 @@
 <?php
     include_once "inc/functions.php";
-    include_once "admin.php";
+    include_once "process.php";
 
 
 ?>
@@ -34,6 +34,9 @@
                     if(isset($_GET['status'])) {
                         echo getActionMessage($_GET['status']);
                     }
+
+                        print_r($_FILES['profile-pic']);
+
                 ?>
                 <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
                     <label for="name">Name:</label>
