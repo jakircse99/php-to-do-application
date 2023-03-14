@@ -43,10 +43,10 @@
 
         <header>
             <div class="greetings">
-                <p><i class="fa-solid fa-hands-clapping"></i> Good morning, <?php echo getProfileName($_userId); ?>!</p>
+                <p><i class="fa-solid fa-hands-clapping"></i> <?php greeting() ?>, <?php echo getProfileName($_userId); ?>!</p>
             </div>
             <div class="date">
-                <p>Friday, 24th February, 2023</p>
+                <p><?php echo displayDate() ?></p>
             </div>
         </header>
 

@@ -56,6 +56,12 @@ aside .profile {
     text-align: center;
 }
 
+aside .profile img {
+    width: 120px;
+    height: 120px;
+    clip-path: circle(50% at 50% 50%);
+}
+
 aside .menu a {
     color: var(--white);
     display: block;
@@ -109,4 +115,11 @@ table .tomorrow tr td:nth-child(3) span {
     padding: 10px 15px;
     border-radius: 50%;
     color: white;
+}
+
+/* Add task section */
+
+.create-task {
+    margin-top: 50px;
+    max-width: 600px;
 }

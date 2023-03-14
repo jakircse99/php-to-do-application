@@ -1,7 +1,20 @@
+<?php
+    session_start();
+    include_once "../inc/functions.php";
+
+
+    $_userId = $_SESSION['id'] ?? 0;
+
+    if(!$_userId) {
+        header('location: ../index.php');
+        die();
+    } 
+?>
+
 <aside>
     <div class="profile">
-        <img src="../images/user.png" alt="">
-        <h3>Jhon Doe</h3>
+        <img src="../profile-pic/<?php displayProfilePic($_userId) ?>" alt="">
+        <h3><?php echo getProfileName($_userId) ?></h3>
     </div>
     <div class="menu">
         <a href="../admin/dashboard.php"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
