@@ -1,4 +1,4 @@
-// add task page
+//-------------- add task page -------------//
 
 // set min date as current date
 
@@ -10,12 +10,14 @@ taskDate.value = new Date().toISOString().slice(0, 10);
 
 // validate form
 
-function validateFrom() {
-    if(taskName.value == '') {
-        alert("Name can't be blank");
-    }else if (taskName.value.length > 50) {
-        alert("Enter task name less then 50 letters");
-    }
+// function validateFrom() {
+//     if(taskName.value == '') {
+//         alert("Name can't be blank");
+//         return false;
+//     }else if (taskName.value.length > 50) {
+//         alert("Enter task name less then 50 letters");
+//         return false;
+//     }
 
-    return false;
-}
+    
+// }

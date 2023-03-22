@@ -1,0 +1,29 @@
+include_once (dirname(__FILE__).'/config/config.php');
+include_once (dirname(__FILE__).'/inc/functions.php');
+
+// sanitize add validate add task form
+$taskName = $taskDate = '';
+$taskNameErr = $taskDateErr = '';
+if($_SERVER['REQUEST_METHOD'] == "POST") {
+    if(empty($_POST['task-name'])) {
+        $taskNameErr = "Task name is missing";
+    }else {
+        if(strlen($_POST['task-name']) > 50) {
+            $taskNameErr = "Task name should be less then 50 letters";
+        } else {
+            $taskName = $_POST['task-name'];
+        }
+    }
+
+    if(empty($_POST['task-date'])) {
+        $taskDateErr = "Date is missing";
+    } else {
+        $date = $_POST['task-date'];
+        $y = substr($date, 0, 4);
+        $m = substr($date, 5, 2);
+        $d = substr($date, 8, 2);
+        if(checkdate($m, $d, $y)) {
+            $taskDate = $_POST['task-date'];
+        }
+    }
+}

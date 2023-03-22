@@ -1,8 +1,8 @@
 <?php
 session_start();
 // database connection
-include_once "./config/config.php";
-include_once "./inc/functions.php";
+include_once (dirname(__FILE__).'/config/config.php');
+include_once (dirname(__FILE__).'/inc/functions.php');
 mysqli_report(MYSQLI_REPORT_OFF);
 $conn = mysqli_connect(HOST_NAME, DB_USER, DB_PASSWORD, DB_NAME);
 
@@ -99,6 +99,10 @@ function validateUserInput($data) {
     $data = htmlspecialchars($data);
     return $data;
 }
+
+
+
+
 
 // user login
 if('login' == $action) {

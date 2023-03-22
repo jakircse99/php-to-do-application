@@ -1,5 +1,6 @@
 <?php
-    include_once "../inc/functions.php";
+    include_once "../inc/add_task_function.php";
+    
 
     // else {
     //     $currentTime = time();
@@ -35,14 +36,25 @@
 
         <div class="create-task">
             <h3>Add task</h3>
+            <?php
+                $status = $_GET['status'] ?? 0;
+                if($status == 1) {
+                    echo "<blockquote>Task added successfully</blockquote>";
+                } else if($status == 2) {
+                    echo "<blockquote>Something went worng, please try agian!</blockquote>";
+                }
+                ?>
             <form action="<?php echo $_SERVER['PHP_SELF'] ?>" onsubmit="return validateFrom()" method="post">
                 <label for="task-name">Task name</label>
-                <input type="text" name="task-name" id= "task-name" placeholder="Enter your task name" required>
+                <input type="text" name="task-name" id= "task-name" placeholder="Enter your task name" required><br>
+                <span><?php echo $taskNameErr ?></span>
                 <label for="date">Date</label>
-                <input type="date" placeholder="dd-mm-yyyy" min="1997-01-01" max="2030-12-31" name="task-date" id= "date" required>
+                <input type="date" placeholder="dd-mm-yyyy" min="1997-01-01" max="2030-12-31" name="task-date" id= "date" required><br>
+                <span><?php echo $taskDateErr ?></span>
                 <input type="submit" value = "Add task" class="btn">
             </form>
         </div>
+
 
     <!-- main section end-->
 
