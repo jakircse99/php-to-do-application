@@ -68,61 +68,41 @@
                         <tr>
                             <td><span class="tasks-list-title"><i class="fa-solid fa-chevron-down"></i> Today</span></td>
                         </tr>
-                        <tr>
-                            <td><span><i class="fa-solid fa-circle-check"></i> UI/ UX Research </span></td>
-                            <td><span>done</span></td>
-                            <td><span>100</span></td>
-                        </tr>
-                        <tr>
-                            <td><span><i class="fa-solid fa-circle-check"></i> UI/ UX Research </span></td>
-                            <td><span>done</span></td>
-                            <td><span>100</span></td>
-                        </tr>
-                        <tr>
-                            <td><span><i class="fa-solid fa-circle-check"></i> UI/ UX Research </span></td>
-                            <td><span>done</span></td>
-                            <td><span>100</span></td>
-                        </tr>
-                        <tr>
-                            <td><span><i class="fa-solid fa-circle-check"></i> UI/ UX Research </span></td>
-                            <td><span>done</span></td>
-                            <td><span>100</span></td>
-                        </tr>
-                        <tr>
-                            <td><span><i class="fa-solid fa-circle-check"></i> UI/ UX Research </span></td>
-                            <td><span>done</span></td>
-                            <td><span>100</span></td>
-                        </tr>
+                        
+                        <?php 
+                            $tasks = getTodayTasks($_userId);
+                            $taskLenght = count($tasks);
+                            for($i = 0; $i < $taskLenght; $i++) {
+                                ?>
+                            <tr>
+                                <td><span> <?php echo $tasks[$i]['task_name'] ?> </span></td>
+                                <td><span><?php echo $tasks[$i]['status'] ?></span></td>
+                                <td><span><?php echo $tasks[$i]['progress'] ?></span></td>
+                                </tr>
+                                <?php
+                            }
+
+                        ?>
+                        
                    </tbody>
                    <tbody class="tomorrow">
                         <tr>
                             <td><span class="tasks-list-title"><i class="fa-solid fa-chevron-down"></i> Tomorrow</span></td>
                         </tr>
-                        <tr>
-                            <td><span><i class="fa-regular fa-circle"></i> Learn data structure </span></td>
-                            <td><span>To-do</span></td>
-                            <td><span>0</span></td>
-                        </tr>
-                        <tr>
-                            <td><span><i class="fa-regular fa-circle"></i> Learn data structure </span></td>
-                            <td><span>To-do</span></td>
-                            <td><span>0</span></td>
-                        </tr>
-                        <tr>
-                            <td><span><i class="fa-regular fa-circle"></i> Learn data structure </span></td>
-                            <td><span>To-do</span></td>
-                            <td><span>0</span></td>
-                        </tr>
-                        <tr>
-                            <td><span><i class="fa-regular fa-circle"></i> Learn data structure </span></td>
-                            <td><span>To-do</span></td>
-                            <td><span>0</span></td>
-                        </tr>
-                        <tr>
-                            <td><span><i class="fa-regular fa-circle"></i> Learn data structure </span></td>
-                            <td><span>To-do</span></td>
-                            <td><span>0</span></td>
-                        </tr>
+                        <?php 
+                            $tasks = getTomorrowTasks($_userId);
+                            $taskLenght = count($tasks);
+                            for($i = 0; $i < $taskLenght; $i++) {
+                                ?>
+                            <tr>
+                                <td><span> <?php echo $tasks[$i]['task_name'] ?> </span></td>
+                                <td><span><?php echo $tasks[$i]['status'] ?></span></td>
+                                <td><span><?php echo $tasks[$i]['progress'] ?></span></td>
+                                </tr>
+                                <?php
+                            }
+
+                        ?>
                    </tbody>
             </table>
         </main>

@@ -65,5 +65,33 @@ function displayDate() {
     echo $d;
 }
 
+// tasks details
+
+function getTodayTasks($userId) {
+    global $conn;
+    $query = "SELECT * FROM tasks WHERE user_id = '{$userId}' &&  task_date = CURDATE()";
+    $result = mysqli_query($conn, $query);
+    $data = array();
+    if(mysqli_num_rows($result)> 0) {
+        while($_data = mysqli_fetch_assoc($result)) {
+            array_push($data, $_data);
+        }
+    }
+    return $data;
+}
+
+function getTomorrowTasks($userId) {
+    global $conn;
+    $query = "SELECT * FROM tasks WHERE user_id = '{$userId}' &&  task_date = CURDATE()+1";
+    $result = mysqli_query($conn, $query);
+    $data = array();
+    if(mysqli_num_rows($result)> 0) {
+        while($_data = mysqli_fetch_assoc($result)) {
+            array_push($data, $_data);
+        }
+    }
+    return $data;
+}
+
 
 
