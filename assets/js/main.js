@@ -10,14 +10,14 @@ taskDate.value = new Date().toISOString().slice(0, 10);
 
 // validate form
 
-// function validateFrom() {
-//     if(taskName.value == '') {
-//         alert("Name can't be blank");
-//         return false;
-//     }else if (taskName.value.length > 50) {
-//         alert("Enter task name less then 50 letters");
-//         return false;
-//     }
+function validateFrom() {
+    if(taskName.value == '') {
+        alert("Name can't be blank");
+        return false;
+    }else if (taskName.value.length > 50) {
+        alert("Enter task name less then 50 letters");
+        return false;
+    }
 
     
-// }
+}

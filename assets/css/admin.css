@@ -94,7 +94,11 @@ table .today tr td:nth-child(2) span {
 
 table .today tr td:nth-child(3) span {
     background-color: var(--green);
-    padding: 10px 15px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
     border-radius: 50%;
     color: white;
 }
@@ -112,14 +116,108 @@ table .tomorrow tr td:nth-child(2) span {
 
 table .tomorrow tr td:nth-child(3) span {
     background-color: var(--main-color);
-    padding: 10px 15px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
     border-radius: 50%;
     color: white;
 }
 
-/* Add task section */
+/* Add task page */
 
 .create-task {
     margin-top: 50px;
     max-width: 600px;
 }
+
+/* task info */
+
+.tasks-info {
+    margin-top: 50px;
+}
+
+.tasks-info .table-heading {
+    font-weight: 600;
+}
+
+
+.tasks-info .incomplete-tasks tr i{
+    color: var(--main-color);
+}
+
+.tasks-info .incomplete-tasks tr td:nth-child(2) span {
+    background-color: var(--main-color);
+    padding: 2px 10px;
+    border-radius: 20px;
+    color: white;
+}
+
+.tasks-info .incomplete-tasks tr td:nth-child(3) span {
+    background-color: var(--main-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    color: white;
+}
+
+.tasks-info .complete-tasks tr i{
+    color: var(--green);
+}
+
+.tasks-info .complete-tasks tr td:nth-child(2) span {
+    background-color: var(--green);
+    padding: 2px 10px;
+    border-radius: 20px;
+    color: white;
+}
+
+.tasks-info .complete-tasks tr td:nth-child(3) span {
+    background-color: var(--green);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    color: white;
+}
+
+.tasks-info tr td:nth-child(5) a {
+    margin: 0 2px;
+}
+
+.tasks-info .complete-btn {
+    background-color: var(--green);
+    padding: 2px 16px;
+    color: var(--white);
+    border-radius: 20px;
+}
+
+.tasks-info .incomplete-btn {
+    background-color: var(--secondery-color);
+    padding: 2px 16px;
+    color: var(--white);
+    border-radius: 20px;
+}
+
+
+.tasks-info .edit-btn {
+    background-color: var(--orange);
+    padding: 2px 16px;
+    color: var(--white);
+    border-radius: 20px;
+}
+
+.tasks-info .delete-btn {
+    background-color: var(--red);
+    padding: 2px 16px;
+    color: var(--white);
+    border-radius: 20px;
+}
+
+

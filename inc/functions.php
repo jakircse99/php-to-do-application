@@ -93,5 +93,50 @@ function getTomorrowTasks($userId) {
     return $data;
 }
 
+// incomplete tasks
+
+function getIncompleteTasks($userId) {
+    global $conn;
+    $query = "SELECT * FROM tasks WHERE user_id = '{$userId}' AND status = 'to-do'";
+    $result = mysqli_query($conn, $query);
+    $data = array();
+    if(mysqli_num_rows($result)> 0) {
+        while($_data = mysqli_fetch_assoc($result)) {
+            array_push($data, $_data);
+        }
+    }
+    return $data;
+}
+
+// complete tasks 
+
+function getCompleteTasks($userId) {
+    global $conn;
+    $query = "SELECT * FROM tasks WHERE user_id = '{$userId}' AND status = 'done'";
+    $result = mysqli_query($conn, $query);
+    $data = array();
+    if(mysqli_num_rows($result)> 0) {
+        while($_data = mysqli_fetch_assoc($result)) {
+            array_push($data, $_data);
+        }
+    }
+    return $data;
+}
+
+// complete and incomplete action
+
+$tasksAction = $_GET['task'] ?? '';
+$id = $_GET['id'] ?? '';
+
+if($tasksAction == 'complete') {
+    $query = "UPDATE tasks SET status = 'done' WHERE id = '{$id}'";
+    mysqli_query($conn, $query);
+    header('location: all-tasks.php');
+}else if ($tasksAction == 'incomplete') {
+    $query = "UPDATE tasks SET status = 'to-do' WHERE id = '{$id}'";
+    mysqli_query($conn, $query);
+    header('location: all-tasks.php');
+}
+
 
 
