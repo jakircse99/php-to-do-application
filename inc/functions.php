@@ -123,7 +123,7 @@ function getCompleteTasks($userId) {
     return $data;
 }
 
-// complete and incomplete action
+// complete, incomplete and delete action 
 
 $tasksAction = $_GET['task'] ?? '';
 $id = $_GET['id'] ?? '';
@@ -136,6 +136,10 @@ if($tasksAction == 'complete') {
     $query = "UPDATE tasks SET status = 'to-do' WHERE id = '{$id}'";
     mysqli_query($conn, $query);
     header('location: all-tasks.php');
+} else if($tasksAction == 'delete') {
+    $query = "DELETE FROM tasks WHERE id = '{$id}'";
+    mysqli_query($conn, $query);
+    header('location: all-tasks.php?status=delete');
 }
 
 // get task data form server
@@ -199,12 +203,16 @@ function validateEditedInput($data) {
 
 
 if($action == 'update') {
-    if($taskName && $taskDate & $progress && $id) {
+    if($taskName && $taskDate && ($progress !='') && $id) {
         $query = "UPDATE tasks SET task_name = '{$taskName}', task_date = '{$taskDate}', progress = '{$progress}' WHERE id='{$id}'";
         mysqli_query($conn, $query);
-        header('location: all-tasks.php?update=success');
+        header('location: all-tasks.php?status=update');
     }
 }
+
+// task delele
+
+
 
 
 

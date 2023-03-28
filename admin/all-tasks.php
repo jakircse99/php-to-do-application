@@ -45,9 +45,11 @@
         <div class="tasks-info">
         <?php
         
-        $status = $_GET['update'] ?? '';
-        if($status == 'success') {
+        $status = $_GET['status'] ?? '';
+        if($status == 'update') {
             echo "<blockquote style='color: green;'> Task updated successfully </blockquote>";
+        }else if($status == 'delete') {
+            echo "<blockquote style='color: green;'> Task deleted successfully </blockquote>";
         }
         ?>
             <h3>All tasks</h3>
@@ -86,7 +88,7 @@
                                 ?>
                                     <a class="incomplete-btn" href="all-tasks.php?task=incomplete">Incomplete</a>
                                 <?php
-                            } ?><a class="edit-btn" href="all-tasks.php?task=edit&id=<?php echo $id;?>"> Edit</a><a class="delete-btn" href="#"> Delete</a></td>
+                            } ?><a class="edit-btn" href="all-tasks.php?task=edit&id=<?php echo $id;?>"> Edit</a><a class="delete-btn" href="all-tasks.php?task=delete&id=<?php echo $id;?>"> Delete</a></td>
                         </tr>
                             <?php
                         }
@@ -117,7 +119,7 @@
                                 ?>
                                     <a class="incomplete-btn" href="all-tasks.php?task=incomplete&id=<?php echo $id;?>">Incomplete</a>
                                 <?php
-                            } ?><a class="edit-btn" href="all-tasks.php?task=edit&id=<?php echo $id;?>"> Edit</a><a class="delete-btn" href="#"> Delete</a></td>
+                            } ?><a class="edit-btn" href="all-tasks.php?task=edit&id=<?php echo $id;?>"> Edit</a><a class="delete-btn" href="all-tasks.php?task=delete&id=<?php echo $id;?>"> Delete</a></td>
                         </tr>
                             <?php
                         }

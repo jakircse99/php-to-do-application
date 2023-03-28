@@ -75,7 +75,7 @@
                                 ?>
                                     <a class="incomplete-btn" href="today-tasks.php?task=incomplete&id=<?php echo $id;?>">Incomplete</a>
                                 <?php
-                            } ?><a class="edit-btn" href="today-tasks.php?task=edit&id=<?php echo $id;?>"> Edit</a><a class="delete-btn" href="#"> Delete</a></td>
+                            } ?><a class="edit-btn" href="today-tasks.php?task=edit&id=<?php echo $id;?>"> Edit</a><a class="delete-btn" href="all-tasks.php?task=delete&id=<?php echo $id;?>"> Delete</a></td>
                             </tr>
                             <?php
                         }

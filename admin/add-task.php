@@ -30,7 +30,7 @@
     <!-- custom css link -->
     <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
-<body>
+<body onload="setDefault()">
 
     <!-- main section start-->
 
