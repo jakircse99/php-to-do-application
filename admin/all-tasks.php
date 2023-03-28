@@ -40,9 +40,16 @@
 <body>
     
 
-    <!-- todays tasks start-->
+    <!-- all tasks start-->
 
         <div class="tasks-info">
+        <?php
+        
+        $status = $_GET['update'] ?? '';
+        if($status == 'success') {
+            echo "<blockquote style='color: green;'> Task updated successfully </blockquote>";
+        }
+        ?>
             <h3>All tasks</h3>
             <table>
                 <thead>
@@ -79,7 +86,7 @@
                                 ?>
                                     <a class="incomplete-btn" href="all-tasks.php?task=incomplete">Incomplete</a>
                                 <?php
-                            } ?><a class="edit-btn" href="#"> Edit</a><a class="delete-btn" href="#"> Delete</a></td>
+                            } ?><a class="edit-btn" href="all-tasks.php?task=edit&id=<?php echo $id;?>"> Edit</a><a class="delete-btn" href="#"> Delete</a></td>
                         </tr>
                             <?php
                         }
@@ -110,7 +117,7 @@
                                 ?>
                                     <a class="incomplete-btn" href="all-tasks.php?task=incomplete&id=<?php echo $id;?>">Incomplete</a>
                                 <?php
-                            } ?><a class="edit-btn" href="#"> Edit</a><a class="delete-btn" href="#"> Delete</a></td>
+                            } ?><a class="edit-btn" href="all-tasks.php?task=edit&id=<?php echo $id;?>"> Edit</a><a class="delete-btn" href="#"> Delete</a></td>
                         </tr>
                             <?php
                         }
@@ -120,7 +127,35 @@
 
         </div>
 
-    <!-- todays tasks ends-->
+        <?php
+        
+            $tasksAction = $_GET['task'] ?? '';
+            $taskId = $_GET['id'] ?? '';
+            if($tasksAction == 'edit' && $taskId !='') {
+                $taskData = getTaskData($taskId);
+                ?>
+                <div class="edit-task-popup">
+                    <form action="" method="post">
+                    <label for="task-name">Task name</label>
+                        <input type="text" name="task-name" id= "task-name" value="<?php echo $taskData['task_name'] ?>" required><br>
+                        <span><?php echo $taskNameErr ?></span>
+                        <label for="date">Date</label>
+                        <input type="date" value="<?php echo $taskData['task_date'] ?>" min="1997-01-01" max="2030-12-31" name="task-date" id= "task-date" required><br>
+                        <span><?php echo $taskDateErr ?></span>
+                        <label for="progress">Progress</label>
+                        <input type="number" id="progress" name="progress" min="0" max="100" value="<?php echo $taskData['progress'] ?>"  required><br>
+                        <span><?php echo $progressErr ?></span>
+                        <input type="hidden" name="action" value="update">
+                        <input type="submit" value = "Update" class="btn">
+                    </form>
+                </div>
+                <?php
+            }
+        ?>
+
+
+
+    <!-- all tasks ends-->
 
     <!-- sidebar starts -->
 
@@ -130,6 +165,6 @@
 
 
     <!-- custom script link  -->
-    <script src="./assets/js/main.js"></script>
+    <script src="../assets/js/main.js"></script>
 </body>
 </html>

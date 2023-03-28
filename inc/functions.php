@@ -138,5 +138,75 @@ if($tasksAction == 'complete') {
     header('location: all-tasks.php');
 }
 
+// get task data form server
+
+function getTaskData ($id) {
+    global $conn;
+    $query = "SELECT task_name, task_date, progress FROM tasks WHERE id = '{$id}' LIMIT 1";
+    $result = mysqli_query($conn, $query);
+    $data = array();
+    if(mysqli_num_rows($result) > 0) {
+        $data = mysqli_fetch_assoc($result);
+    }
+    return $data;
+}
+
+// update edited task data 
+
+$action = $_POST['action'] ?? '';
+$id = $_GET['id'] ?? '';
+$taskName = $taskDate = $progress = '';
+$taskNameErr = $taskDateErr = $progressErr = '';
+
+if($_SERVER['REQUEST_METHOD'] == "POST") {
+    if(empty('task-name')) {
+        $taskNameErr = 'Name is missing';
+    }else {
+        if(strlen($_POST['task-name']) > 50) {
+            $taskNameErr = 'Task name should be less then 50 letters';
+        }else {
+            $taskName = validateEditedInput($_POST['task-name']);
+        }
+    }
+
+    if(empty($_POST['task-date'])) {
+        $taskDateErr = "Date is missing";
+    } else {
+        $date = $_POST['task-date'];
+        $y = substr($date, 0, 4);
+        $m = substr($date, 5, 2);
+        $d = substr($date, 8, 2);
+        if(checkdate($m, $d, $y)) {
+            $taskDate = validateEditedInput($_POST['task-date']);
+        } else {
+            $taskDateErr = "Date is invalid";
+        }
+    }
+
+    if($_POST['progress'] < 0 && $_POST['progress'] > 100) {
+        $progressErr = "Progress should be between 0 and 100";
+    } else {
+        $progress = validateEditedInput($_POST['progress']);
+    }
+}
+
+function validateEditedInput($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+
+if($action == 'update') {
+    if($taskName && $taskDate & $progress && $id) {
+        $query = "UPDATE tasks SET task_name = '{$taskName}', task_date = '{$taskDate}', progress = '{$progress}' WHERE id='{$id}'";
+        mysqli_query($conn, $query);
+        header('location: all-tasks.php?update=success');
+    }
+}
+
+
+
 
 

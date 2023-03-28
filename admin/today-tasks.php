@@ -59,6 +59,7 @@
                         $tasks = getTodayTasks($_userId);
                         $taskLenght = count($tasks);
                         for($i = 0; $i < $taskLenght; $i++) {
+                            $id = $tasks[$i]['id'];
                             ?>
                         <tr>
                             <td><span> <?php echo $tasks[$i]['task_name'] ?> </span></td>
@@ -67,14 +68,14 @@
                             <td><?php echo $tasks[$i]['task_date'] ?></td>
                             <td><?php if($tasks[$i]['status'] != 'done') {
                                 ?>
-                                <a class="complete-btn" href="#">Complete</a>
+                                <a class="complete-btn" href="today-tasks.php?task=complete&id=<?php echo $id;?>">Complete</a>
                                 <?php
                                 
                             }else {
                                 ?>
-                                    <a class="incomplete-btn" href="#">Incomplete</a>
+                                    <a class="incomplete-btn" href="today-tasks.php?task=incomplete&id=<?php echo $id;?>">Incomplete</a>
                                 <?php
-                            } ?><a class="edit-btn" href="#"> Edit</a><a class="delete-btn" href="#"> Delete</a></td>
+                            } ?><a class="edit-btn" href="today-tasks.php?task=edit&id=<?php echo $id;?>"> Edit</a><a class="delete-btn" href="#"> Delete</a></td>
                             </tr>
                             <?php
                         }
@@ -83,6 +84,31 @@
                 </tbody>
 
             </table>
+    <?php
+        
+        $tasksAction = $_GET['task'] ?? '';
+        $taskId = $_GET['id'] ?? '';
+        if($tasksAction == 'edit' && $taskId !='') {
+            $taskData = getTaskData($taskId);
+            ?>
+            <div class="edit-task-popup">
+                <form action="" method="post">
+                <label for="task-name">Task name</label>
+                    <input type="text" name="task-name" id= "task-name" value="<?php echo $taskData['task_name'] ?>" required><br>
+                    <span><?php echo $taskNameErr ?></span>
+                    <label for="date">Date</label>
+                    <input type="date" value="<?php echo $taskData['task_date'] ?>" min="1997-01-01" max="2030-12-31" name="task-date" id= "task-date" required><br>
+                    <span><?php echo $taskDateErr ?></span>
+                    <label for="progress">Progress</label>
+                    <input type="number" id="progress" name="progress" min="0" max="100" value="<?php echo $taskData['progress'] ?>"  required><br>
+                    <span><?php echo $progressErr ?></span>
+                    <input type="hidden" name="action" value="update">
+                    <input type="submit" value = "Update" class="btn">
+                </form>
+            </div>
+            <?php
+        }
+    ?>
 
         </div>
 
