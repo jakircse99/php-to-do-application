@@ -162,7 +162,7 @@ $id = $_GET['id'] ?? '';
 $taskName = $taskDate = $progress = '';
 $taskNameErr = $taskDateErr = $progressErr = '';
 
-if($_SERVER['REQUEST_METHOD'] == "POST") {
+if('update' == $action) {
     if(empty('task-name')) {
         $taskNameErr = 'Name is missing';
     }else {
@@ -202,7 +202,7 @@ function validateEditedInput($data) {
 }
 
 
-if($action == 'update') {
+if('update' == $action) {
     if($taskName && $taskDate && ($progress !='') && $id) {
         $query = "UPDATE tasks SET task_name = '{$taskName}', task_date = '{$taskDate}', progress = '{$progress}' WHERE id='{$id}'";
         mysqli_query($conn, $query);

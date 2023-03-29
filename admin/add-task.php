@@ -51,7 +51,7 @@
                 <label for="date">Date</label>
                 <input type="date" placeholder="dd-mm-yyyy" min="1997-01-01" max="2030-12-31" name="task-date" id= "date" required><br>
                 <span><?php echo $taskDateErr ?></span>
-                <input type="submit" value = "Add task" class="btn">
+                <input type="submit" value = "Add task" class="add-btn">
             </form>
         </div>
 

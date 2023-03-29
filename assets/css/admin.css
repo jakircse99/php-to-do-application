@@ -27,6 +27,20 @@ body {
     margin-left: 30rem;
 }
 
+.add-btn {
+    background-color: var(--green) !important;
+    color: var(--white);
+    border:none !important;
+}
+
+.delete-btn {
+    background-color: var(--red) !important;
+    color: var(--white);
+    border:none !important;
+
+}
+
+
 header {
     display: flex;
     justify-content: space-between;
@@ -221,3 +235,9 @@ table .tomorrow tr td:nth-child(3) span {
 }
 
 
+/* keep notes */
+
+.keep-notes {
+    margin-top: 50px;
+    max-width: 600px;
+}
