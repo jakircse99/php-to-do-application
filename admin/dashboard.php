@@ -37,8 +37,8 @@
     <!-- custom css link -->
     <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
-<body>
-    
+<body id="body">
+    <i class="fa-solid fa-bars menu-bars" id="menu-bars"></i>
     <!-- header starts -->
 
         <header>
@@ -117,6 +117,6 @@
 
 
     <!-- custom script link  -->
-    <script src="./assets/js/main.js"></script>
+    <script src="../assets/js/main.js"></script>
 </body>
 </html>

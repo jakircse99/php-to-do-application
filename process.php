@@ -1,4 +1,9 @@
 <?php
+if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERVER['SCRIPT_FILENAME'] ) ) {
+header( 'HTTP/1.0 403 Forbidden', TRUE, 403 );
+die ("<h2>Access Denied!</h2> This file is protected and not available to public.");
+}
+
 session_start();
 // database connection
 include_once (dirname(__FILE__).'/config/config.php');
@@ -6,9 +11,7 @@ include_once (dirname(__FILE__).'/inc/functions.php');
 mysqli_report(MYSQLI_REPORT_OFF);
 $conn = mysqli_connect(HOST_NAME, DB_USER, DB_PASSWORD, DB_NAME);
 
-if($conn) {
-    echo "connect successfully";
-}else {
+if(!$conn) {
     throw new Exception("Database connection not establish");
 }
 
@@ -17,8 +20,8 @@ if($conn) {
 $action = $_POST['action'] ?? 0;
 $status = 0;
 
-
-$name = $email = $password = $confirmPassword = $profilePic = '';
+$name = $email = $password = $confirmPassword = '';
+$profilePic = [];
 $nameErr = $emailErr = $passwordErr = $confirmPasswordErr = $profilePicErr = '';
 
 // sanitize and validate user input
@@ -63,7 +66,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         }
     }
 
-    if(isset($_FILES['profile-pic']["error"]) == 0) {
+    if($_FILES['profile-pic']["size"] == 0) {
         $profilePicErr = "Profile picture is missing";
     } else {
         if($_FILES['profile-pic']) {
@@ -134,10 +137,10 @@ if('login' == $action) {
 // user register 
 if('register' == $action) {
     if($name && $email && $password && $profilePic) {
-        $targetFile = "./profile-pic/". basename($_FILES['profile-pic']['name']);
-        $fileName = basename($_FILES['profile-pic']['name']);
+        $targetFile = "./profile-pic/". basename($profilePic['name']);
+        $fileName = basename($profilePic['name']);
         $passHash = password_hash($password, PASSWORD_BCRYPT);
-        move_uploaded_file($_FILES['profile-pic']['tmp_name'], $targetFile);
+        move_uploaded_file($profilePic['tmp_name'], $targetFile);
         $query = "INSERT INTO  users(name, email, password, profilepic) VALUES ('{$name}', '{$email}', '{$passHash}', '{$fileName}')";
         
         mysqli_query($conn, $query);

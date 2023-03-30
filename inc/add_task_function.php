@@ -1,4 +1,8 @@
 <?php
+if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERVER['SCRIPT_FILENAME'] ) ) {
+    header( 'HTTP/1.0 403 Forbidden', TRUE, 403 );
+    die ("<h2>Access Denied!</h2> This file is protected and not available to public.");
+    }
 session_start();
 require_once (dirname(__FILE__).'/../config/config.php');
 $conn = mysqli_connect(HOST_NAME, DB_USER, DB_PASSWORD, DB_NAME);

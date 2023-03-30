@@ -27,6 +27,8 @@ body {
     margin-left: 30rem;
 }
 
+
+
 .add-btn {
     background-color: var(--green) !important;
     color: var(--white);
@@ -40,6 +42,12 @@ body {
 
 }
 
+.menu-bars {
+    margin-top: 2rem;
+    font-size: 25px;
+    color:#252529;
+    display: none;
+}
 
 header {
     display: flex;
@@ -74,6 +82,14 @@ aside .profile img {
     width: 120px;
     height: 120px;
     clip-path: circle(50% at 50% 50%);
+}
+
+aside .profile span {
+    display: block;
+    font-size: 22px;
+    font-weight: 600;
+    color:var(--light-color);
+    margin-bottom: 20px;
 }
 
 aside .menu a {
@@ -240,4 +256,44 @@ table .tomorrow tr td:nth-child(3) span {
 .keep-notes {
     margin-top: 50px;
     max-width: 600px;
+}
+
+/* profile */
+
+.profile {
+    margin-top: 50px;
+    max-width: 600px;
+}
+
+.profile img {
+    height: 150px;
+    width: 150px;
+    clip-path: circle(50% at 50% 50%);
+    
+}
+
+/* Responsive for mobile */
+@media screen and (max-width:768px){
+    .menu-bars {
+        display: block;
+    }
+    aside {
+        display: none;
+        height: 100%;
+    }
+    aside.active {
+        display: block;
+    }
+
+    body {
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+
+    body.active {
+        margin-left: 30rem;
+        width: 100%;
+        overflow: hidden;
+    }
+
 }

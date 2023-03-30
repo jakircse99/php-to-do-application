@@ -41,5 +41,18 @@ document.addEventListener('DOMContentLoaded', function() {
         })
     } 
 })
+
+// toggle sidebar
+let menuBar = document.getElementById("menu-bars");
+let sidebar = document.getElementById("sidebar");
+let body = document.getElementById("body");
+
+function toggleSidebar() {
+    sidebar.classList.toggle("active");
+    body.classList.toggle("active");
+
+}
+
+menuBar.addEventListener('click', toggleSidebar);
     
 
