@@ -293,7 +293,6 @@ table .tomorrow tr td:nth-child(3) span {
     body.active {
         margin-left: 30rem;
         width: 100%;
-        overflow: hidden;
     }
 
 }
