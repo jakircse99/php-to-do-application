@@ -7,9 +7,7 @@ session_start();
 require_once (dirname(__FILE__).'/../config/config.php');
 $conn = mysqli_connect(HOST_NAME, DB_USER, DB_PASSWORD, DB_NAME);
 
-if($conn) {
-    echo "connect successfully";
-}else {
+if(!$conn) {
     throw new Exception("Database connection not establish");
 }
 

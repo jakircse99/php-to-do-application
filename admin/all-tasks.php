@@ -37,8 +37,8 @@
     <!-- custom css link -->
     <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
-<body>
-    
+<body id="body">
+    <i class="fa-solid fa-bars menu-bars" id="menu-bars"></i>
 
     <!-- all tasks start-->
 

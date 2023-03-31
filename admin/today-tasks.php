@@ -37,8 +37,8 @@
     <!-- custom css link -->
     <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
-<body>
-    
+<body id="body">
+    <i class="fa-solid fa-bars menu-bars" id="menu-bars"></i>
 
     <!-- todays tasks start-->
 
@@ -65,7 +65,7 @@
                             <td><span> <?php echo $tasks[$i]['task_name'] ?> </span></td>
                             <td><span><?php echo $tasks[$i]['status'] ?></span></td>
                             <td><span><?php echo $tasks[$i]['progress'] ?></span></td>
-                            <td><?php echo $tasks[$i]['task_date'] ?></td>
+                            <td><p><?php echo $tasks[$i]['task_date'] ?></p></td>
                             <td><?php if($tasks[$i]['status'] != 'done') {
                                 ?>
                                 <a class="complete-btn" href="today-tasks.php?task=complete&id=<?php echo $id;?>">Complete</a>
@@ -122,6 +122,6 @@
 
 
     <!-- custom script link  -->
-    <script src="./assets/js/main.js"></script>
+    <script src="../assets/js/main.js"></script>
 </body>
 </html>

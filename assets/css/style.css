@@ -79,6 +79,6 @@ header h2 {
 /* Responsive for mobile */
 @media screen and (max-width:768px){
     .container header h2 {
-        font-size: 26px ;
+        font-size: 26px;
     }
 }

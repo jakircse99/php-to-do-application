@@ -287,12 +287,47 @@ table .tomorrow tr td:nth-child(3) span {
 
     body {
         margin-left: 2rem;
-        margin-right: 2rem;
     }
 
     body.active {
         margin-left: 30rem;
         width: 100%;
+        position: fixed;
     }
+
+    header {
+        flex-direction: column;
+        gap: 2px;
+    }
+    .create-task {
+        margin-right: 2rem;
+    }
+
+    .tasks-info .incomplete-btn {
+      display: block;
+    }
+    
+    
+    .tasks-info .edit-btn {
+        display: block;
+    }
+    
+    .tasks-info .delete-btn {
+        display: block;
+    }
+
+    .tasks-info tr td:nth-child(5) a {
+        margin: 4px 2px;
+    }
+
+    .tasks-info tr td:nth-child(2) span{
+        display: inline-block;
+        width: 60px;
+    }
+
+    .keep-notes , .profile {
+        margin-right: 2rem;
+    }
+
 
 }

@@ -30,8 +30,8 @@
     <!-- custom css link -->
     <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
-<body onload="setDefault()">
-
+<body id="body" onload="setDefault()">
+    <i class="fa-solid fa-bars menu-bars" id="menu-bars"></i>
     <!-- main section start-->
 
         <div class="keep-notes">
