@@ -27,7 +27,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add new task</title>
+    <title>Profile</title>
     <!-- milligram css cdn link -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
@@ -43,7 +43,7 @@
         <?php 
             $data = profileData($_userId);
             $status = $_GET['status']?? 0;
-            if('update_success' == $status) {
+            if('update_success' === $status) {
                 echo "<blockquote>Profile update successfully</blockquote>";
             }
            

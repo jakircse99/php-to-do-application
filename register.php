@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHP To-Do Application</title>
+    <title>Register</title>
     <!-- milligram css cdn link -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
@@ -27,7 +27,7 @@
             <a class="btn" href="./register.php">Register</a>
         </header>
         <main>
-            <!-- login section start -->
+            <!-- register section start -->
             <div class="register-box">
                 <h2>Register</h2>
                 <?php 
@@ -35,7 +35,6 @@
                         echo getActionMessage($_GET['status']);
                     }
 
-                        print_r($_FILES['profile-pic']);
 
                 ?>
                 <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
@@ -60,7 +59,7 @@
                 </form>
             </div>
         </main>
-            <!-- login section end -->
+            <!-- register section end -->
 
 
     <!-- custom script link  -->

@@ -35,7 +35,7 @@ $profilePic = [];
 $nameErr = $emailErr = $oldPasswordErr = $newPasswordErr = $profilePicErr = '';
 
 // sanitize and validate user input
-if('profile-update' == $action) {
+if('profile-update' === $action) {
     if(empty($_POST['name'])) {
         $nameErr = "Name is missing";
     } else {
@@ -75,8 +75,13 @@ if('profile-update' == $action) {
             $newPassword = validateUserInput($_POST['new-pass']);
         }
     }
-
-    if($_FILES['profile-pic']["size"] == 0) {
+    
+    
+    
+    
+    
+    $fileSize = $_FILES['profile-pic']["size"] ?? '';
+    if($fileSize == 0) {
         $profilePicErr = "Profile picture is missing";
     } else {
         if($_FILES['profile-pic']) {
@@ -114,7 +119,7 @@ function validateUserInput($data) {
 }
 
 
-if('profile-update' == $action) {
+if('profile-update' === $action) {
     if($name && $email && $newPassword && $oldPassword && $profilePic && $userId) {
         $queryPass = "SELECT password FROM users WHERE id='{$userId}' LIMIT 1"; 
         $result = mysqli_query($conn, $queryPass);

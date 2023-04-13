@@ -1,26 +1,24 @@
 <?php
-if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERVER['SCRIPT_FILENAME'] ) ) {
-    header( 'HTTP/1.0 403 Forbidden', TRUE, 403 );
-    die ("<h2>Access Denied!</h2> This file is protected and not available to public.");
-    }
-    if (session_status() !== PHP_SESSION_ACTIVE) {
-        session_start();
+    if(!isset($_SESSION)) 
+    { 
+        session_start(); 
     }
     include_once "../inc/functions.php";
 
+// if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERVER['SCRIPT_FILENAME'] ) ) {
+//     header( 'HTTP/1.0 403 Forbidden', TRUE, 403 );
+//     die ("<h2>Access Denied!</h2> This file is protected and not available to public.");
+//     }
 
     $_userId = $_SESSION['id'] ?? 0;
 
-    if(!$_userId) {
-        header('location: ../index.php');
-        die();
-    } 
+
 ?>
 
 <aside id="sidebar">
     
     <div class="profile">
-        <img src="../profile-pic/<?php displayProfilePic($_userId) ?>" alt="">
+        <img src="../profile-pic/<?php displayProfilePic($_userId)?>" alt="">
         <span><?php echo getProfileName($_userId) ?></span>
     </div>
     <div class="menu">

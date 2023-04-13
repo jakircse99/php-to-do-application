@@ -1,16 +1,6 @@
 <?php
-    include_once "../inc/keep_notes_function.php";
-    
+    include_once "../inc/keep_notes_function.php"; 
 
-    // else {
-    //     $currentTime = time();
-
-    //     if($currentTime > $_SESSION['expire']) {
-    //         $_SESSION['id'] = 0;
-    //         session_destroy();
-    //         header("location: ../index.php");
-    //     }
-    // }
 
 ?>
 
@@ -20,7 +10,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add new task</title>
+    <title>Keep notes</title>
     <!-- milligram css cdn link -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
@@ -30,32 +20,25 @@
     <!-- custom css link -->
     <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
-<body id="body" onload="setDefault()">
+<body id="body">
     <i class="fa-solid fa-bars menu-bars" id="menu-bars"></i>
     <!-- main section start-->
 
         <div class="keep-notes">
             <?php
                 $status = $_GET['status'] ?? 0;
-                if('added' == $status) {
+                if('added' === $status) {
                     echo "<blockquote>Note added successfully</blockquote>";
-                }else if('deleted' == $status) {
+                }else if('deleted' === $status) {
                     echo "<blockquote>Note deleted successfully</blockquote>";
                 }
             
             ?>
             <h3>Notes</h3>
-            <?php
-                $status = $_GET['status'] ?? 0;
-                if($status == 1) {
-                    echo "<blockquote>Task added successfully</blockquote>";
-                } else if($status == 2) {
-                    echo "<blockquote>Something went worng, please try agian!</blockquote>";
-                }
-                ?>
-            <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+
+            <form action="" method="post">
                 <input type="text" name="note" id="note" placeholder="Enter your note" required>
-                <span><?php echo $noteErr; ?></span>
+                <span><?php echo $noteErr; ?></span><br>
                 <input type="hidden" name="action" value="add-note">
                 <input type="submit" value = "Add note" class="add-btn">
             </form>
@@ -93,8 +76,8 @@
 
     <!-- sidebar ends -->
 
+<!--custom js script-->
+<script src="../assets/js/main.js"></script>
 
-    <!-- custom script link  -->
-    <script src="../assets/js/main.js"></script>
 </body>
 </html>

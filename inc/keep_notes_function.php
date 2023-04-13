@@ -17,7 +17,8 @@ $noteName = '';
 $noteErr = '';
 $userId = $_SESSION['id'] ?? 0;
 
-if('add-note' == $action) {
+if($_SERVER['REQUEST_METHOD'] == "POST") {
+    if('add-note' == $action) {
     if(empty($_POST['note'])) {
         $noteErr = "Note name is missing";
     }else {
@@ -28,6 +29,8 @@ if('add-note' == $action) {
         }
     }
 }
+}
+
 
 function validateInput($data) {
     $data = trim($data);
@@ -36,12 +39,18 @@ function validateInput($data) {
     return $data;
 }
 
-if($noteName && $userId) {
+if($_SERVER['REQUEST_METHOD'] == "POST") {
+    if('add-note' == $action) {
+    if($noteName && $userId) {
     $query = "INSERT INTO notes (user_id, note) VALUES('{$userId}', '{$noteName}') ";
     if(mysqli_query($conn, $query)) {
         header('location: keep-notes.php?status=added');
+        }
     }
 }
+}
+
+
 
 // display notes
 
@@ -59,11 +68,12 @@ function displayNotes($userId) {
 }
 
 // delete notes
- 
+
 if('delete' == $action) {
-    $noteIds = $_POST['note-ids'];
-    $_noteIds = join(',', $noteIds);
+    $noteIds = $_POST['note-ids'] ?? 0;
+    
     if($noteIds) {
+        $_noteIds = join(',', $noteIds);
         $query = "DELETE FROM notes WHERE id in ($_noteIds)";
         mysqli_query($conn, $query);
         header('location:keep-notes.php?status=deleted');

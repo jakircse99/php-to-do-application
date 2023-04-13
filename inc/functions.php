@@ -28,11 +28,10 @@ function displayProfilePic($_userId) {
     global $conn;
     $query = "SELECT profilePic from users WHERE id = {$_userId}";
     $result = mysqli_query($conn, $query);
-    $_data = '';
     if(mysqli_num_rows($result)> 0) {
-        $_data = mysqli_fetch_column($result);
+        $data = mysqli_fetch_assoc($result);
     }
-    echo $_data;
+    echo $data['profilePic'];
 }
 
 // display greeting
